@@ -4,21 +4,18 @@ class Solution(object):
     
     def combinationSum(self, candidates, target):
         result = []
-        
-        def bc(r, candidates):
-            if not candidates: return 
-            
-            for i in range(len(candidates)):
-                if sum(r) <= target - candidates[i]:
-                    r = r + [candidates[i]]
-                    if sum(r) == target:
-                        result.append(r)
-                    else:
-                        bc(r,candidates[i:])
-                    r = r[:-1]
-        
-        bc([], candidates)
-        
+
+        def dfs(candidates, target, idx, cur):
+            if target < 0: 
+                return 
+            if target == 0 and cur: 
+                result.append(cur)
+                return 
+            for i in range(idx, len(candidates)):
+                cur.append(candidates[i])
+                dfs(candidates, target-candidates[i], i, cur)
+                cur.pop()
+             
         return result
     
     def combinationSumDFS(self, candidates, target):
