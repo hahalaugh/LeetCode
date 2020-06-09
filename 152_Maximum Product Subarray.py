@@ -23,7 +23,7 @@ class Solution(object):
     
     def maxProductDPSpaceN(self, nums):
         '''永远记录最小值和最大值，乘以下一个数'''
-        """
+        """ 
         :type nums: List[int]
         :rtype: int
         """
